@@ -3,17 +3,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "BuildNotes",
+    name: "NextBuild",
     platforms: [
         .macOS(.v14)
     ],
     products: [
-        .executable(name: "BuildNotes", targets: ["BuildNotesApp"])
+        .executable(name: "NextBuild", targets: ["NextBuildApp"])
     ],
     targets: [
         .executableTarget(
-            name: "BuildNotesApp",
-            path: "Sources/BuildNotesApp"
+            name: "NextBuildApp",
+            path: "Sources/NextBuildApp"
         )
     ]
 )

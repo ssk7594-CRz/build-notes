@@ -1,4 +1,4 @@
-# Build Notes
+# NextBuild
 
 A simple macOS app for tracking feature ideas across personal apps.
 
@@ -20,7 +20,7 @@ swift build
 ## Run
 
 ```sh
-swift run BuildNotes
+swift run NextBuild
 ```
 
 The app stores local data under Application Support.

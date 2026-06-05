@@ -28,11 +28,8 @@ struct ContentView: View {
                     .frame(width: 38, height: 38)
                     .background(AppTheme.accent, in: RoundedRectangle(cornerRadius: 9))
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Build Notes")
+                    Text("NextBuild")
                         .font(.headline.weight(.semibold))
-                    Text("private backlog")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
                 }
                 Spacer()
             }

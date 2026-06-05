@@ -16,9 +16,10 @@ final class AppStore: ObservableObject {
     init() {
         let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
             ?? FileManager.default.homeDirectoryForCurrentUser
-        let directory = support.appendingPathComponent("BuildNotes", isDirectory: true)
+        let directory = support.appendingPathComponent("NextBuild", isDirectory: true)
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         persistenceURL = directory.appendingPathComponent("data.json")
+        migrateLegacyDataIfNeeded(to: persistenceURL, supportDirectory: support)
         load()
     }
 
@@ -271,6 +272,17 @@ final class AppStore: ObservableObject {
         let state = AppState(selectedAppID: selectedAppID, widgetAppLimit: widgetAppLimit, apps: apps)
         guard let data = try? JSONEncoder.buildNotes.encode(state) else { return }
         try? data.write(to: persistenceURL, options: [.atomic])
+    }
+
+    private func migrateLegacyDataIfNeeded(to newURL: URL, supportDirectory: URL) {
+        guard !FileManager.default.fileExists(atPath: newURL.path) else { return }
+
+        let legacyURL = supportDirectory
+            .appendingPathComponent("BuildNotes", isDirectory: true)
+            .appendingPathComponent("data.json")
+
+        guard FileManager.default.fileExists(atPath: legacyURL.path) else { return }
+        try? FileManager.default.copyItem(at: legacyURL, to: newURL)
     }
 }
 

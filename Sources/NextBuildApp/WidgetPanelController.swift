@@ -29,7 +29,7 @@ final class WidgetPanelController {
             backing: .buffered,
             defer: false
         )
-        panel.title = "Build Notes Widget"
+        panel.title = "NextBuild Widget"
         panel.titleVisibility = .hidden
         panel.titlebarAppearsTransparent = true
         panel.isMovableByWindowBackground = true

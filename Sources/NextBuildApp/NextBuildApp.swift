@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct BuildNotesApp: App {
+struct NextBuildApp: App {
     @StateObject private var store = AppStore()
 
     var body: some Scene {
@@ -12,13 +12,13 @@ struct BuildNotesApp: App {
         }
         .defaultSize(width: 1180, height: 760)
 
-        MenuBarExtra("Build Notes", systemImage: "checklist") {
+        MenuBarExtra("NextBuild", systemImage: "checklist") {
             MenuBarQuickCaptureView()
                 .environmentObject(store)
         }
         .menuBarExtraStyle(.window)
 
-        Window("Quick Widget", id: "quick-widget") {
+        Window("NextBuild Widget", id: "quick-widget") {
             DesktopWidgetView()
                 .environmentObject(store)
                 .frame(width: 720, height: 460)
@@ -27,7 +27,7 @@ struct BuildNotesApp: App {
         .windowResizability(.contentSize)
 
         .commands {
-            CommandMenu("Build Notes") {
+            CommandMenu("NextBuild") {
                 Button("새 기능") {
                     store.focusQuickCapture.toggle()
                 }

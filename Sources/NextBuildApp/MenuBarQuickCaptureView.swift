@@ -96,7 +96,7 @@ struct MenuBarQuickCaptureView: View {
     private var header: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text(store.selectedApp?.name ?? "Build Notes")
+                Text(store.selectedApp?.name ?? "NextBuild")
                     .font(.headline.weight(.bold))
                 Text("빠른 메모")
                     .font(.caption)

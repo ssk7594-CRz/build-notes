@@ -46,7 +46,7 @@ struct DesktopWidgetView: View {
     private var header: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Build Notes")
+                Text("NextBuild")
                     .font(.headline.weight(.bold))
                 Text("위젯 표시 \(store.widgetApps.count)개")
                     .font(.caption)
