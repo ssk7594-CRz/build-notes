@@ -1,9 +1,11 @@
 .build/
 .swiftpm/
+.release/
 *.app/
 Assets/*.iconset/
 .DS_Store
 DerivedData/
+xcuserdata/
 *.xcuserdata/
 *.xcuserstate
 Package.resolved

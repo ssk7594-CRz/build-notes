@@ -13,6 +13,16 @@ A simple macOS app for tracking feature ideas across personal apps.
 
 ## Build
 
+### Xcode app target
+
+Open `NextBuild.xcodeproj`, select the `NextBuild` scheme, then build for `My Mac`.
+
+```sh
+xcodebuild -project NextBuild.xcodeproj -scheme NextBuild -destination 'generic/platform=macOS' build
+```
+
+### Swift Package
+
 ```sh
 swift build
 ```
@@ -23,11 +33,15 @@ swift build
 swift run NextBuild
 ```
 
-## Release App Bundle
+## Archive For App Store
 
 ```sh
-Scripts/generate-icon.rb
-Scripts/build-release-app.sh
+xcodebuild -project NextBuild.xcodeproj \
+  -scheme NextBuild \
+  -destination 'generic/platform=macOS' \
+  -configuration Release \
+  archive \
+  -archivePath .release/NextBuild.xcarchive
 ```
 
 The app stores local data under Application Support.

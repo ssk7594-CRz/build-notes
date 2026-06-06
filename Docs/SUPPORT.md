@@ -1,8 +1,8 @@
 # NextBuild Support
 
-For support, contact:
+For support, open an issue at:
 
-TODO
+https://github.com/ssk7594-CRz/build-notes/issues
 
 When reporting an issue, include:
 

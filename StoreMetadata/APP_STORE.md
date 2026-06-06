@@ -38,8 +38,8 @@ Productivity
 
 ## Support URL
 
-TODO
+https://github.com/ssk7594-CRz/build-notes/issues
 
 ## Privacy Policy URL
 
-TODO
+https://github.com/ssk7594-CRz/build-notes/blob/main/Docs/PRIVACY.md

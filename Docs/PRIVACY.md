@@ -6,4 +6,4 @@ All app data is stored locally on the user's Mac in Application Support. If the 
 
 NextBuild does not use analytics, tracking SDKs, advertising SDKs, or third-party servers.
 
-Contact: TODO
+Support: https://github.com/ssk7594-CRz/build-notes/issues
