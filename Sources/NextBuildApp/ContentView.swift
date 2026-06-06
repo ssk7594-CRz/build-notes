@@ -131,14 +131,27 @@ struct ContentView: View {
     }
 
     private var board: some View {
-        ScrollView([.horizontal, .vertical]) {
-            HStack(alignment: .top, spacing: 12) {
-                ForEach(store.apps) { app in
-                    AppFeatureCard(app: app)
-                        .frame(width: 330)
+        Group {
+            if store.apps.isEmpty {
+                VStack(spacing: 10) {
+                    Text("앱을 추가하세요")
+                        .font(.title2.weight(.bold))
+                    Text("왼쪽에서 관리할 앱 이름을 먼저 넣으면 됩니다.")
+                        .font(.callout)
+                        .foregroundStyle(AppTheme.secondaryText)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView([.horizontal, .vertical]) {
+                    HStack(alignment: .top, spacing: 12) {
+                        ForEach(store.apps) { app in
+                            AppFeatureCard(app: app)
+                                .frame(width: 330)
+                        }
+                    }
+                    .padding(24)
                 }
             }
-            .padding(24)
         }
     }
 

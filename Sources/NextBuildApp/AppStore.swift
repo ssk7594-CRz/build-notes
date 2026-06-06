@@ -238,33 +238,8 @@ final class AppStore: ObservableObject {
             return
         }
 
-        let sample = ManagedApp(
-            name: "샘플 앱",
-            features: [
-                FeatureItem(
-                    title: "배포 후 떠오른 기능을 빠르게 적는 인박스",
-                    status: .planned,
-                    priority: .high,
-                    targetVersion: "v1.0",
-                    note: "생각나는 즉시 적는 흐름이 핵심."
-                ),
-                FeatureItem(
-                    title: "구현된 기능과 구현할 기능을 한눈에 구분",
-                    status: .done,
-                    priority: .medium,
-                    targetVersion: "v1.0"
-                ),
-                FeatureItem(
-                    title: "완료 기능 접어두고 흐름 확인하기",
-                    status: .review,
-                    priority: .medium,
-                    targetVersion: "v1.2",
-                    note: "필요할 때만 펼쳐 히스토리처럼 보기."
-                ),
-            ]
-        )
-        apps = [sample]
-        selectedAppID = sample.id
+        apps = []
+        selectedAppID = nil
         save()
     }
 

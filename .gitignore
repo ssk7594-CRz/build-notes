@@ -1,6 +1,7 @@
 .build/
 .swiftpm/
 *.app/
+Assets/*.iconset/
 .DS_Store
 DerivedData/
 *.xcuserdata/

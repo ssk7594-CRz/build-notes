@@ -23,4 +23,11 @@ swift build
 swift run NextBuild
 ```
 
+## Release App Bundle
+
+```sh
+Scripts/generate-icon.rb
+Scripts/build-release-app.sh
+```
+
 The app stores local data under Application Support.
