@@ -38,6 +38,16 @@ final class AppStore: ObservableObject {
         Array(apps.prefix(widgetAppLimit))
     }
 
+    var canMoveSelectedAppUp: Bool {
+        guard let index = selectedAppIndex else { return false }
+        return index > apps.startIndex
+    }
+
+    var canMoveSelectedAppDown: Bool {
+        guard let index = selectedAppIndex else { return false }
+        return index < apps.index(before: apps.endIndex)
+    }
+
     func setWidgetAppLimit(_ limit: Int) {
         widgetAppLimit = min(max(limit, 1), 5)
         save()
@@ -59,6 +69,27 @@ final class AppStore: ObservableObject {
         apps.removeAll { $0.id == selectedAppID }
         self.selectedAppID = apps.first?.id
         selectedFeatureID = nil
+        save()
+    }
+
+    func moveApps(from source: IndexSet, to destination: Int) {
+        let previousSelection = selectedAppID
+        apps.move(fromOffsets: source, toOffset: destination)
+        selectedAppID = previousSelection.flatMap { id in
+            apps.contains { $0.id == id } ? id : nil
+        } ?? apps.first?.id
+        save()
+    }
+
+    func moveSelectedApp(by offset: Int) {
+        guard let currentIndex = selectedAppIndex else { return }
+
+        let targetIndex = currentIndex + offset
+        guard apps.indices.contains(targetIndex) else { return }
+
+        let app = apps.remove(at: currentIndex)
+        apps.insert(app, at: targetIndex)
+        selectedAppID = app.id
         save()
     }
 

@@ -45,11 +45,14 @@ struct ContentView: View {
                 .tint(AppTheme.accent)
             }
 
+            reorderControls
+
             List(selection: $store.selectedAppID) {
                 ForEach(store.apps) { app in
                     AppRow(app: app)
                         .tag(app.id as UUID?)
                 }
+                .onMove(perform: store.moveApps)
             }
             .listStyle(.sidebar)
 
@@ -66,6 +69,38 @@ struct ContentView: View {
         .padding()
         .background(AppTheme.sidebar)
         .navigationSplitViewColumnWidth(min: 250, ideal: 280, max: 340)
+    }
+
+    private var reorderControls: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("앱 순서")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(AppTheme.secondaryText)
+
+            HStack(spacing: 8) {
+                Button {
+                    store.moveSelectedApp(by: -1)
+                } label: {
+                    Label("위로", systemImage: "arrow.up")
+                        .frame(maxWidth: .infinity)
+                }
+                .help("선택한 앱 위로 이동")
+                .buttonStyle(.bordered)
+                .disabled(!store.canMoveSelectedAppUp)
+
+                Button {
+                    store.moveSelectedApp(by: 1)
+                } label: {
+                    Label("아래로", systemImage: "arrow.down")
+                        .frame(maxWidth: .infinity)
+                }
+                .help("선택한 앱 아래로 이동")
+                .buttonStyle(.bordered)
+                .disabled(!store.canMoveSelectedAppDown)
+            }
+        }
+        .padding(10)
+        .quietCard(cornerRadius: 10)
     }
 
     private var sidebarTools: some View {
